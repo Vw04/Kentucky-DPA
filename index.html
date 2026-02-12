@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kentucky Dream Fund - Homium Presentation</title>
+    <title>Kentucky Can Close the Affordability Gap — Homium</title>
+    <meta property="og:title" content="Kentucky Can Close the Affordability Gap — Homium">
+    <meta property="og:description" content="The Homium Solution for Affordable Homeownership and Down Payment Assistance">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='15' fill='%230F172A'/><text x='50' y='68' font-family='serif' font-size='60' font-weight='700' fill='%23FDB913' text-anchor='middle'>H</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Taviraj:wght@300;400;500;600;700&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -102,6 +106,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            overflow-y: auto;
         }
 
         .slide.active {
@@ -136,14 +141,12 @@
             font-weight: 700;
             margin-bottom: 40px;
             line-height: 1.2;
-            background: linear-gradient(135deg, var(--homium-yellow) 0%, #FFF 50%, var(--homium-light-blue) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--homium-yellow);
         }
 
         .slide-body {
             font-size: 20px;
+            font-weight: 300;
             line-height: 1.8;
             margin-bottom: 40px;
             color: #E2E8F0;
@@ -189,6 +192,7 @@
 
         .stat-label {
             font-size: 18px;
+            font-weight: 400;
             color: #E2E8F0;
             margin-top: 10px;
         }
@@ -213,13 +217,14 @@
         }
 
         .context-module-title::before {
-            content: "●";
+            content: "\25CF";
             margin-right: 10px;
             font-size: 24px;
         }
 
         .citation {
             font-size: 14px;
+            font-weight: 400;
             color: var(--homium-gray);
             margin-top: 15px;
             font-style: italic;
@@ -309,7 +314,7 @@
         }
 
         .bullet-list li::before {
-            content: "→";
+            content: "\2192";
             position: absolute;
             left: 0;
             color: var(--homium-yellow);
@@ -409,6 +414,84 @@
             }
         }
 
+        /* Title Slide */
+        .title-slide {
+            background: linear-gradient(rgba(15, 23, 42, 0.80), rgba(15, 23, 42, 0.88)),
+                        url('https://images.unsplash.com/photo-1592595896616-c37162298647?w=1920&q=80&auto=format&fit=crop') center/cover no-repeat;
+            background-color: var(--homium-dark);
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .title-slide .slide-title {
+            font-family: 'Taviraj', serif;
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--homium-yellow);
+            line-height: 1.2;
+            margin-bottom: 30px;
+            max-width: 900px;
+        }
+
+        .title-slide .slide-subtitle {
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 24px;
+            font-weight: 300;
+            color: #E2E8F0;
+            line-height: 1.6;
+            max-width: 750px;
+            margin-top: 10px;
+        }
+
+        .title-slide .homium-logo {
+            font-family: 'Taviraj', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--homium-yellow);
+            letter-spacing: 3px;
+            margin-bottom: 60px;
+        }
+
+        /* City Image Box */
+        .city-box {
+            display: block;
+            position: relative;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-decoration: none;
+            color: #fff;
+            overflow: hidden;
+            background-color: var(--homium-dark);
+            background-size: cover;
+            background-position: center;
+            border: 2px solid rgba(253, 185, 19, 0.3);
+            transition: all 0.3s ease;
+            min-height: 160px;
+        }
+
+        .city-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(15, 23, 42, 0.70), rgba(15, 23, 42, 0.85));
+            z-index: 1;
+        }
+
+        .city-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(253, 185, 19, 0.3);
+            border-color: var(--homium-yellow);
+        }
+
+        .city-box-content {
+            position: relative;
+            z-index: 2;
+        }
+
         /* Scrollbar Styling */
         ::-webkit-scrollbar {
             width: 8px;
@@ -426,6 +509,81 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #FFA500;
         }
+
+        /* Print Styles */
+        @media print {
+            body {
+                overflow: visible;
+                height: auto;
+                background: #fff;
+                color: #1a1a1a;
+            }
+
+            .presentation-container {
+                display: block;
+                height: auto;
+            }
+
+            .nav-sidebar,
+            .nav-controls,
+            .slide-counter {
+                display: none !important;
+            }
+
+            .slides-container {
+                position: static;
+                overflow: visible;
+            }
+
+            .slide {
+                position: static !important;
+                opacity: 1 !important;
+                transform: none !important;
+                page-break-after: always;
+                height: auto;
+                min-height: 100vh;
+                background: #fff !important;
+                color: #1a1a1a;
+                padding: 40px;
+            }
+
+            .slide.prev {
+                transform: none !important;
+            }
+
+            .slide-header {
+                color: #1E3A8A !important;
+                -webkit-text-fill-color: #1E3A8A !important;
+            }
+
+            .slide-body,
+            .slide-body strong {
+                color: #1a1a1a !important;
+            }
+
+            .visual-element {
+                border-color: #ccc;
+                background: #f9f9f9 !important;
+            }
+
+            .stat-box {
+                background: #f0f0f0 !important;
+                box-shadow: none;
+            }
+
+            .stat-number {
+                color: #1E3A8A !important;
+            }
+
+            .title-slide {
+                background: #1E3A8A !important;
+                color: #fff;
+            }
+
+            .title-slide .slide-title {
+                color: #FDB913 !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -440,8 +598,15 @@
         <div class="slides-container">
             <div class="slide-counter" id="slideCounter">1/17</div>
 
-            <!-- Slide 1: Kentucky's Homeownership Window -->
-            <div class="slide active" data-slide="1">
+            <!-- Slide 1: Title Slide -->
+            <div class="slide title-slide active" data-slide="1">
+                <div class="homium-logo">HOMIUM</div>
+                <div class="slide-title">Kentucky Can Close the Affordability Gap: With Capital That Lasts</div>
+                <div class="slide-subtitle">The Homium Solution for Affordable Homeownership and Down Payment Assistance</div>
+            </div>
+
+            <!-- Slide 2: Kentucky's Homeownership Window -->
+            <div class="slide" data-slide="2">
                 <h1 class="slide-header">Kentucky's Homeownership Problem Has a Window</h1>
                 <div class="slide-body">
                     Kentucky is at an inflection point: affordability pressures are rising while state leaders are actively proposing major housing investments. The real question isn't whether dollars will be deployed — it's whether Kentucky builds a system where those dollars become <strong>one-time relief or a lasting engine</strong> for homeownership access.
@@ -457,18 +622,18 @@
                     <div style="text-align: center; padding: 40px;">
                         <div style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap;">
                             <div style="flex: 1; min-width: 250px; margin: 20px;">
-                                <div style="font-size: 24px; color: #E74C3C; margin-bottom: 15px;">❌ Spent Once</div>
+                                <div style="font-size: 24px; color: #E74C3C; margin-bottom: 15px; font-weight: 700;">Spent Once</div>
                                 <div style="background: rgba(231, 76, 60, 0.2); padding: 30px; border-radius: 15px; border: 2px solid #E74C3C;">
-                                    <div style="font-size: 48px; margin-bottom: 10px;">💸</div>
+                                    <div style="font-size: 36px; margin-bottom: 10px; color: #E74C3C; font-weight: 700;">X</div>
                                     <div>One-time appropriation</div>
                                     <div style="font-size: 14px; margin-top: 10px; color: #CBD5E1;">Funds disappear after use</div>
                                 </div>
                             </div>
-                            <div style="font-size: 48px; margin: 0 30px;">→</div>
+                            <div style="font-size: 48px; margin: 0 30px; color: var(--homium-yellow);">&rarr;</div>
                             <div style="flex: 1; min-width: 250px; margin: 20px;">
-                                <div style="font-size: 24px; color: var(--homium-green); margin-bottom: 15px;">✓ Recycled</div>
+                                <div style="font-size: 24px; color: var(--homium-green); margin-bottom: 15px; font-weight: 700;">Recycled</div>
                                 <div style="background: rgba(16, 185, 129, 0.2); padding: 30px; border-radius: 15px; border: 2px solid var(--homium-green);">
-                                    <div style="font-size: 48px; margin-bottom: 10px;">♻️</div>
+                                    <div style="font-size: 36px; margin-bottom: 10px; color: var(--homium-green); font-weight: 700;">&circlearrowleft;</div>
                                     <div>Evergreen capital</div>
                                     <div style="font-size: 14px; margin-top: 10px; color: #CBD5E1;">Funds work perpetually</div>
                                 </div>
@@ -478,8 +643,8 @@
                 </div>
             </div>
 
-            <!-- Slide 2: The Structural Gap -->
-            <div class="slide" data-slide="2">
+            <!-- Slide 3: The Structural Gap -->
+            <div class="slide" data-slide="3">
                 <h1 class="slide-header">The Gap Is Structural (Income vs Home Prices)</h1>
                 <div class="slide-body">
                     When home values rise faster than wages, the constraint becomes structural: families can't save enough cash or clear <strong>debt-to-income ratios</strong> — especially first-time buyers and workforce households. Traditional DPA helps, but it often functions as episodic funding rather than a durable mechanism that scales with the market.
@@ -491,7 +656,7 @@
                             <div class="chart-value">$65k</div>
                             <div class="chart-label">Median Income</div>
                         </div>
-                        <div style="font-size: 48px; color: #E74C3C; align-self: center;">≠</div>
+                        <div style="font-size: 48px; color: #E74C3C; align-self: center;">&ne;</div>
                         <div class="chart-bar" style="height: 280px; background: linear-gradient(to top, #E74C3C, #C0392B);">
                             <div class="chart-value">$260k</div>
                             <div class="chart-label">Median Home</div>
@@ -515,8 +680,8 @@
                 </div>
             </div>
 
-            <!-- Slide 3: Policy Momentum -->
-            <div class="slide" data-slide="3">
+            <!-- Slide 4: Policy Momentum -->
+            <div class="slide" data-slide="4">
                 <h1 class="slide-header">Policy Momentum Is Real, But Kentucky Needs "Supply + Access"</h1>
                 <div class="slide-body">
                     The budget signal is clear: Kentucky wants housing outcomes at scale. But Kentucky's next constraint will be <strong>delivery capacity</strong> — the ability to deploy quickly, track impact, and keep funds working year after year.
@@ -534,22 +699,21 @@
 
                 <div class="visual-element">
                     <div style="text-align: center; padding: 30px;">
-                        <div style="font-size: 72px; margin-bottom: 20px;">📈</div>
-                        <div style="font-size: 28px; color: var(--homium-green); font-weight: 700; margin-bottom: 15px;">Momentum ↑</div>
+                        <div style="font-size: 28px; color: var(--homium-green); font-weight: 700; margin-bottom: 15px;">Momentum &uarr;</div>
                         <div style="font-size: 20px; color: #E2E8F0;">Constraint shifts from "will we fund?" to <strong>"will it last?"</strong></div>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 4: DPA Demand Exceeds Supply -->
-            <div class="slide" data-slide="4">
+            <!-- Slide 5: DPA Demand Exceeds Supply -->
+            <div class="slide" data-slide="5">
                 <h1 class="slide-header">Evidence: DPA Demand Routinely Exceeds Supply</h1>
                 <div class="slide-body">
                     In practice, many DPA programs operate as <strong>time-windowed, first-come/first-served allocations</strong>. Families race the clock; lenders rush reservations; funds close quickly. That's not a stable pathway to homeownership access.
                 </div>
 
                 <div class="context-module">
-                    <div class="context-module-title">🚨 FHLB Cincinnati Welcome Home Program</div>
+                    <div class="context-module-title">FHLB Cincinnati Welcome Home Program</div>
                     <p><strong>Opens:</strong> April 6, 2026 at 8:00 AM ET</p>
                     <p><strong>Distribution:</strong> First-come, first-served until reserved</p>
                     <p><strong>2025 Result:</strong> Program closed March 13, 2025 due to overwhelming demand — funds depleted in days</p>
@@ -560,78 +724,77 @@
                     <div style="padding: 40px; text-align: center;">
                         <div style="display: flex; justify-content: space-around; align-items: center; margin-bottom: 30px;">
                             <div style="flex: 1;">
-                                <div style="font-size: 48px; margin-bottom: 15px;">📅</div>
+                                <div style="width: 56px; height: 56px; margin: 0 auto 15px; border-radius: 50%; background: rgba(16, 185, 129, 0.2); border: 2px solid var(--homium-green); display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; color: var(--homium-green);">1</div>
                                 <div style="font-size: 20px; color: var(--homium-green);">Opens</div>
                             </div>
-                            <div style="font-size: 64px; color: var(--homium-yellow);">→</div>
+                            <div style="font-size: 64px; color: var(--homium-yellow);">&rarr;</div>
                             <div style="flex: 1;">
-                                <div style="font-size: 48px; margin-bottom: 15px;">🏃</div>
+                                <div style="width: 56px; height: 56px; margin: 0 auto 15px; border-radius: 50%; background: rgba(255, 165, 0, 0.2); border: 2px solid #FFA500; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; color: #FFA500;">2</div>
                                 <div style="font-size: 20px; color: #FFA500;">Rush</div>
                             </div>
-                            <div style="font-size: 64px; color: var(--homium-yellow);">→</div>
+                            <div style="font-size: 64px; color: var(--homium-yellow);">&rarr;</div>
                             <div style="flex: 1;">
-                                <div style="font-size: 48px; margin-bottom: 15px;">🚫</div>
+                                <div style="width: 56px; height: 56px; margin: 0 auto 15px; border-radius: 50%; background: rgba(231, 76, 60, 0.2); border: 2px solid #E74C3C; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; color: #E74C3C;">3</div>
                                 <div style="font-size: 20px; color: #E74C3C;">Closes</div>
                             </div>
                         </div>
                         <div style="background: rgba(231, 76, 60, 0.2); padding: 25px; border-radius: 15px; border: 2px solid #E74C3C;">
-                            <div style="font-size: 24px; font-weight: 700; margin-bottom: 10px;">This is not a stable pathway to homeownership</div>
-                            <div style="font-size: 18px;">Families need <strong>evergreen access</strong>, not a lottery system</div>
+                            <div style="font-size: 24px; font-weight: 700; margin-bottom: 10px;">One-time program capital is not sustainable</div>
+                            <div style="font-size: 18px;">Programs should be <strong>evergreen</strong> with <strong>recyclable funds</strong> that continuously serve new borrowers as existing ones pay off</div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 5: What Homium Changes -->
-            <div class="slide" data-slide="5">
-                <h1 class="slide-header">What Homium Changes: Not More Subsidy — Better Capital</h1>
+            <!-- Slide 6: Better Capital -->
+            <div class="slide" data-slide="6">
+                <h1 class="slide-header">Better Capital: Stretch Your Program Dollars Further</h1>
                 <div class="slide-body">
-                    Homium adds a <strong>shared appreciation, zero-monthly-payment second-lien layer</strong> that reduces payment + cash needed at close. The crucial shift: funds become <strong>recoverable and recyclable</strong> instead of disappearing after one use.
+                    Homium adds a <strong>shared appreciation, zero-monthly-payment second-lien mortgage</strong> that reduces payment + cash needed at close. The crucial shift: funds become <strong>recoverable and recyclable</strong> instead of disappearing after one use.
                 </div>
 
                 <div class="visual-element">
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 30px;">
                         <div style="background: rgba(231, 76, 60, 0.15); padding: 30px; border-radius: 15px; border: 2px solid #E74C3C;">
-                            <div style="font-size: 32px; margin-bottom: 20px; text-align: center;">💸</div>
                             <div style="font-size: 24px; font-weight: 700; color: #E74C3C; text-align: center; margin-bottom: 15px;">Traditional DPA</div>
                             <ul style="list-style: none; padding: 0; font-size: 18px;">
-                                <li style="margin-bottom: 10px;">→ Forgivable grants</li>
-                                <li style="margin-bottom: 10px;">→ One-time use</li>
-                                <li style="margin-bottom: 10px;">→ Funds exhausted</li>
-                                <li style="margin-bottom: 10px;">→ Requires new appropriations</li>
+                                <li style="margin-bottom: 10px;">&rarr; Forgivable grants</li>
+                                <li style="margin-bottom: 10px;">&rarr; One-time use</li>
+                                <li style="margin-bottom: 10px;">&rarr; Funds exhausted</li>
+                                <li style="margin-bottom: 10px;">&rarr; Requires new appropriations</li>
                             </ul>
                         </div>
                         <div style="background: rgba(16, 185, 129, 0.15); padding: 30px; border-radius: 15px; border: 2px solid var(--homium-green);">
-                            <div style="font-size: 32px; margin-bottom: 20px; text-align: center;">♻️</div>
                             <div style="font-size: 24px; font-weight: 700; color: var(--homium-green); text-align: center; margin-bottom: 15px;">Homium Shared Appreciation</div>
-                            <ul style="list-style: none; padding: 0; font-size: 18px;">
-                                <li style="margin-bottom: 10px;">✓ 0% interest, no monthly payment</li>
-                                <li style="margin-bottom: 10px;">✓ Repayment from appreciation</li>
-                                <li style="margin-bottom: 10px;">✓ Funds recycle to new families</li>
-                                <li style="margin-bottom: 10px;">✓ Evergreen capital engine</li>
+                            <ul style="list-style: none; padding: 0; font-size: 17px;">
+                                <li style="margin-bottom: 8px;">&check; 0% interest, no monthly payment</li>
+                                <li style="margin-bottom: 8px;">&check; 1:1 repayment: same % of home value borrowed is the % paid back upon sale or refinance</li>
+                                <li style="margin-bottom: 8px;">&check; Repayable at any time by the borrower</li>
+                                <li style="margin-bottom: 8px;">&check; Qualifies as a Fannie Mae-eligible Community Second</li>
+                                <li style="margin-bottom: 8px;">&check; End-to-end digital origination with real-time reporting</li>
+                                <li style="margin-bottom: 8px;">&check; Multiple funding sources: HFAs, municipalities, corporates, foundations, donors</li>
+                                <li style="margin-bottom: 8px;">&check; Costs 5% of originations + 0.50% AUM/yr (vs. ~10% AUM/yr for CA Dream For All)</li>
+                                <li style="margin-bottom: 8px;">&check; Funds recycle to new families — evergreen capital engine</li>
                             </ul>
                         </div>
                     </div>
                 </div>
-
-                <div class="stat-box" style="margin: 30px auto; display: block; max-width: 600px;">
-                    <span class="stat-number">820%</span>
-                    <span class="stat-label">Increase in Homeowner Equity After 10 Years</span>
-                </div>
-                <p class="citation" style="text-align: center;">Source: Homium borrower repayment scenario analysis</p>
             </div>
 
-            <!-- Slide 6: Borrower Economics -->
-            <div class="slide" data-slide="6">
-                <h1 class="slide-header">Borrower Economics: DTI Relief Without Rate Buydowns</h1>
+            <!-- Slide 7: Borrower Economics -->
+            <div class="slide" data-slide="7">
+                <h1 class="slide-header">Borrower Economics: Debt-to-Income Relief</h1>
                 <div class="slide-body">
-                    DTI is the gate. A zero-interest, no-monthly-payment second lien can reduce the required first-mortgage amount — <strong>lowering the payment and improving DTI</strong>, turning "can't qualify" into "can close" while keeping a standard first-mortgage structure.
+                    Debt-to-Income is the gate. A zero-interest, no-monthly-payment second lien can reduce the required first-mortgage amount — <strong>lowering the payment and improving DTI</strong>, turning "can't qualify" into "can close" while keeping a standard first-mortgage structure.
                 </div>
 
                 <div class="visual-element">
+                    <div style="text-align: center; margin-bottom: 20px; padding-top: 10px;">
+                        <div style="font-size: 22px; font-weight: 700; color: var(--homium-yellow);">Example Louisville Home Purchase Comparison with and without Homium</div>
+                    </div>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; padding: 20px;">
                         <div>
-                            <div style="text-align: center; margin-bottom: 20px; font-size: 24px; font-weight: 700; color: #E74C3C;">❌ Without Homium</div>
+                            <div style="text-align: center; margin-bottom: 20px; font-size: 24px; font-weight: 700; color: #E74C3C;">Without Homium</div>
                             <div style="background: rgba(231, 76, 60, 0.2); padding: 25px; border-radius: 15px;">
                                 <div style="margin-bottom: 15px;"><strong>Home Price:</strong> $266,212</div>
                                 <div style="margin-bottom: 15px;"><strong>Monthly Payment:</strong> $1,632</div>
@@ -642,13 +805,13 @@
                             </div>
                         </div>
                         <div>
-                            <div style="text-align: center; margin-bottom: 20px; font-size: 24px; font-weight: 700; color: var(--homium-green);">✓ With Homium (25% SAM)</div>
+                            <div style="text-align: center; margin-bottom: 20px; font-size: 24px; font-weight: 700; color: var(--homium-green);">With Homium (25% SAM)</div>
                             <div style="background: rgba(16, 185, 129, 0.2); padding: 25px; border-radius: 15px;">
                                 <div style="margin-bottom: 15px;"><strong>Home Price:</strong> $266,212</div>
                                 <div style="margin-bottom: 15px;"><strong>Monthly Payment:</strong> <span style="color: var(--homium-green);">$1,211</span></div>
                                 <div style="margin-bottom: 15px;"><strong>Front Ratio (DTI):</strong> <span style="color: var(--homium-green); font-size: 32px; font-weight: 700;">33%</span></div>
                                 <div style="margin-top: 25px; padding: 15px; background: rgba(16, 185, 129, 0.3); border-radius: 8px; text-align: center; font-weight: 700;">
-                                    ✓ QUALIFIES
+                                    QUALIFIES
                                 </div>
                             </div>
                         </div>
@@ -663,47 +826,9 @@
                 <p class="citation">Source: Homium Kentucky Program analysis - Louisville median home / 80% AMI household</p>
             </div>
 
-            <!-- Slide 7: Household Wealth Multiplier -->
-            <div class="slide" data-slide="7">
-                <h1 class="slide-header">Household Wealth: A Measurable Multiplier</h1>
-                <div class="slide-body">
-                    Lower monthly burden creates consistent annual free cash flow — improving <strong>resilience</strong> (emergency savings, debt payoff) and supporting long-run wealth building. Impact can be measured in closed loans, DTI improvement, and household cash flow released.
-                </div>
-
-                <div class="visual-element">
-                    <div style="text-align: center; margin-bottom: 30px;">
-                        <div style="font-size: 28px; font-weight: 700; color: var(--homium-yellow); margin-bottom: 20px;">$5,952 Annual Free Cash Flow</div>
-                        <div style="font-size: 18px; color: #CBD5E1; margin-bottom: 40px;">What happens when a family invests even 50% of their monthly savings?</div>
-                    </div>
-                    
-                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px;">
-                        <div style="background: rgba(59, 130, 246, 0.15); padding: 25px; border-radius: 15px; border: 2px solid var(--homium-light-blue);">
-                            <div style="font-size: 20px; font-weight: 700; margin-bottom: 15px; color: var(--homium-light-blue);">After 5 Years</div>
-                            <div style="font-size: 42px; font-weight: 700; color: var(--homium-yellow); margin-bottom: 10px;">$17,783</div>
-                            <div style="font-size: 16px; color: #CBD5E1;">Moderate Strategy (6% yield)</div>
-                        </div>
-                        <div style="background: rgba(59, 130, 246, 0.15); padding: 25px; border-radius: 15px; border: 2px solid var(--homium-light-blue);">
-                            <div style="font-size: 20px; font-weight: 700; margin-bottom: 15px; color: var(--homium-light-blue);">After 10 Years</div>
-                            <div style="font-size: 42px; font-weight: 700; color: var(--homium-yellow); margin-bottom: 10px;">$41,580</div>
-                            <div style="font-size: 16px; color: #CBD5E1;">Moderate Strategy (6% yield)</div>
-                        </div>
-                        <div style="background: rgba(59, 130, 246, 0.15); padding: 25px; border-radius: 15px; border: 2px solid var(--homium-light-blue);">
-                            <div style="font-size: 20px; font-weight: 700; margin-bottom: 15px; color: var(--homium-light-blue);">After 15 Years</div>
-                            <div style="font-size: 42px; font-weight: 700; color: var(--homium-yellow); margin-bottom: 10px;">$73,425</div>
-                            <div style="font-size: 16px; color: #CBD5E1;">Moderate Strategy (6% yield)</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="slide-body" style="margin-top: 30px;">
-                    This isn't theoretical — it's <strong>compounding financial security</strong> that transforms families' trajectories and builds generational wealth.
-                </div>
-                <p class="citation">Source: Homium wealth management analysis, St. Louis Fed yield estimates</p>
-            </div>
-
             <!-- Slide 8: Kentucky Implementation Sleeves -->
             <div class="slide" data-slide="8">
-                <h1 class="slide-header">Kentucky Implementation: Build Sleeves (Not One Monolith)</h1>
+                <h1 class="slide-header">Kentucky Implementation: Build Sleeves</h1>
                 <div class="slide-body">
                     Kentucky isn't one market. The right build is <strong>one program engine with policy-driven sleeves</strong>: a Louisville pilot, statewide LMI, statewide Missing Middle, and disaster-recovery / High Ground sleeve.
                 </div>
@@ -729,8 +854,7 @@
 
                 <div class="visual-element" style="margin-top: 40px;">
                     <div style="text-align: center; padding: 30px;">
-                        <div style="font-size: 72px; margin-bottom: 20px;">🏗️</div>
-                        <div style="font-size: 32px; font-weight: 700; color: var(--homium-yellow); margin-bottom: 20px;">One Engine → Multiple Sleeves</div>
+                        <div style="font-size: 32px; font-weight: 700; color: var(--homium-yellow); margin-bottom: 20px;">One Engine &rarr; Multiple Sleeves</div>
                         <ul class="bullet-list">
                             <li>Each sleeve has customizable eligibility criteria set by sponsors</li>
                             <li>Shared infrastructure for origination, servicing, reporting</li>
@@ -749,7 +873,7 @@
                 </div>
 
                 <div class="context-module">
-                    <div class="context-module-title">🚨 Louisville DPA Constraint</div>
+                    <div class="context-module-title">Louisville DPA Constraint</div>
                     <p><strong>July 2025:</strong> Louisville's Down Payment Assistance Program <strong>stopped accepting applications</strong> as resources were redirected to other Metro-funded initiatives</p>
                     <p><strong>October 2025:</strong> Community members voiced frustration; program had helped over 1,000 families across 15 years but funding became episodic</p>
                     <p><strong>December 2025:</strong> Metro Council passed only <strong>$1.25 million</strong> for 2026 — less than previous years' $2-3 million</p>
@@ -765,11 +889,11 @@
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px;">
                             <div style="background: rgba(231, 76, 60, 0.15); padding: 25px; border-radius: 15px;">
                                 <div style="font-size: 20px; font-weight: 700; color: #E74C3C; margin-bottom: 15px;">Traditional Model</div>
-                                <div style="font-size: 16px;">Opens → Depletes → Reallocates → Uncertainty</div>
+                                <div style="font-size: 16px;">Opens &rarr; Depletes &rarr; Reallocates &rarr; Uncertainty</div>
                             </div>
                             <div style="background: rgba(16, 185, 129, 0.15); padding: 25px; border-radius: 15px;">
                                 <div style="font-size: 20px; font-weight: 700; color: var(--homium-green); margin-bottom: 15px;">Homium Model</div>
-                                <div style="font-size: 16px;">Deploy → Recycle → Grow → Certainty</div>
+                                <div style="font-size: 16px;">Deploy &rarr; Recycle &rarr; Grow &rarr; Certainty</div>
                             </div>
                         </div>
                     </div>
@@ -789,7 +913,7 @@
                             <div style="font-size: 32px; font-weight: 700; color: var(--homium-yellow); margin-bottom: 20px;">Kentucky Affordable Dream Fund</div>
                             <div style="font-size: 20px; color: #E2E8F0;">Serving teachers, service workers, municipal employees, care-sector workers</div>
                         </div>
-                        
+
                         <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
                             <div class="stat-box" style="background: linear-gradient(135deg, var(--homium-blue), var(--homium-light-blue)); width: 100%;">
                                 <span class="stat-number">60-80%</span>
@@ -810,7 +934,6 @@
                         </div>
 
                         <div style="margin-top: 40px; text-align: center;">
-                            <div style="font-size: 72px; margin-bottom: 15px;">♻️</div>
                             <div style="font-size: 24px; font-weight: 700; color: var(--homium-green);">Evergreen Access — Not Episodic Windows</div>
                         </div>
                     </div>
@@ -874,13 +997,11 @@
                     <div style="text-align: center; padding: 40px;">
                         <div style="display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap;">
                             <div style="flex: 1; min-width: 250px;">
-                                <div style="font-size: 64px; margin-bottom: 20px;">🏗️</div>
                                 <div style="font-size: 24px; font-weight: 700; color: var(--homium-light-blue); margin-bottom: 10px;">Ability to Build</div>
                                 <div style="font-size: 16px; color: #CBD5E1;">Streamlining regulations</div>
                             </div>
                             <div style="font-size: 72px; color: var(--homium-yellow);">+</div>
                             <div style="flex: 1; min-width: 250px;">
-                                <div style="font-size: 64px; margin-bottom: 20px;">💰</div>
                                 <div style="font-size: 24px; font-weight: 700; color: var(--homium-light-blue); margin-bottom: 10px;">Ability to Fund</div>
                                 <div style="font-size: 16px; color: #CBD5E1;">Sustainable capital engine</div>
                             </div>
@@ -914,60 +1035,21 @@
                             <div class="chart-value">$800M</div>
                             <div class="chart-label">Committed Funds</div>
                         </div>
-                        <div style="font-size: 48px; color: #E74C3C; align-self: center;">≠</div>
+                        <div style="font-size: 48px; color: #E74C3C; align-self: center;">&ne;</div>
                         <div class="chart-bar" style="height: 250px; background: linear-gradient(to top, #E74C3C, #C0392B);">
                             <div class="chart-value">$1.4B</div>
                             <div class="chart-label">Total Need</div>
                         </div>
                     </div>
                     <div style="text-align: center; margin-top: 50px;">
-                        <div style="font-size: 72px; margin-bottom: 20px;">♻️</div>
                         <div style="font-size: 28px; font-weight: 700; color: var(--homium-yellow);">Evergreen Loop Keeps Capital Working</div>
                         <div style="font-size: 20px; color: #E2E8F0; margin-top: 15px;">Instead of one-time grants, funds recycle to serve more families</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 14: Federal Supply Tailwinds -->
+            <!-- Slide 14: National Proof -->
             <div class="slide" data-slide="14">
-                <h1 class="slide-header">Federal Supply Tailwinds Kentucky Can Align To</h1>
-                <div class="slide-body">
-                    Kentucky's supply strategy intersects with federal levers — especially <strong>LIHTC expansion proposals</strong>. Homium complements this by ensuring the families Kentucky is trying to serve can actually <strong>buy into the new supply</strong>.
-                </div>
-
-                <div class="context-module">
-                    <div class="context-module-title">Affordable Housing Credit Improvement Act (AHCIA)</div>
-                    <p><strong>H.R. 2725 (119th Congress):</strong> Active legislation to expand Low-Income Housing Tax Credit program</p>
-                    <p><strong>Kentucky Delegation:</strong> Rep. Andy Barr (R-KY-6) is listed as a cosponsor</p>
-                    <p>Bipartisan support for increasing affordable housing supply nationwide</p>
-                    <p class="citation">Source: <a href="https://www.congress.gov/bill/119th-congress/house-bill/2725" target="_blank">Congress.gov - H.R. 2725</a></p>
-                </div>
-
-                <div class="visual-element">
-                    <div style="padding: 40px; text-align: center;">
-                        <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 30px; align-items: center;">
-                            <div style="background: rgba(59, 130, 246, 0.15); padding: 30px; border-radius: 15px; border: 2px solid var(--homium-light-blue);">
-                                <div style="font-size: 48px; margin-bottom: 15px;">🏗️</div>
-                                <div style="font-size: 24px; font-weight: 700; color: var(--homium-light-blue); margin-bottom: 10px;">Supply Expansion</div>
-                                <div style="font-size: 16px; color: #CBD5E1;">LIHTC creates more affordable housing units</div>
-                            </div>
-                            <div style="font-size: 64px; color: var(--homium-yellow);">🔗</div>
-                            <div style="background: rgba(16, 185, 129, 0.15); padding: 30px; border-radius: 15px; border: 2px solid var(--homium-green);">
-                                <div style="font-size: 48px; margin-bottom: 15px;">💰</div>
-                                <div style="font-size: 24px; font-weight: 700; color: var(--homium-green); margin-bottom: 10px;">Buyer Purchasing Power</div>
-                                <div style="font-size: 16px; color: #CBD5E1;">Homium enables families to afford new homes</div>
-                            </div>
-                        </div>
-                        <div style="margin-top: 50px; padding: 25px; background: rgba(253, 185, 19, 0.15); border-radius: 15px;">
-                            <div style="font-size: 22px; font-weight: 700; color: var(--homium-yellow);">Supply and demand must move in lockstep</div>
-                            <div style="font-size: 18px; color: #E2E8F0; margin-top: 10px;">Building units without buyer affordability tools leaves inventory unsold</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 15: National Proof - Dream For All -->
-            <div class="slide" data-slide="15">
                 <h1 class="slide-header">National Proof: Shared Appreciation Triggers Massive Demand</h1>
                 <div class="slide-body">
                     Where shared-appreciation DPA has been offered at scale, demand can be <strong>immediate and overwhelming</strong> — validating that this is not a niche tool. Kentucky's opportunity is to deploy the concept with <strong>better administration + evergreen structure</strong> from day one.
@@ -975,6 +1057,31 @@
 
                 <div class="visual-element">
                     <div style="padding: 40px;">
+                        <!-- Detroit & Utah Section -->
+                        <div style="margin-bottom: 50px;">
+                            <p style="font-size: 22px; color: #E2E8F0; margin-bottom: 30px; font-weight: 300;">
+                                Homium's shared-appreciation DPA programs have already begun to launch and reach capacity
+                                in <strong>Detroit</strong> and <strong>Utah</strong>, with massive demand already seen from borrowers.
+                            </p>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                                <a href="https://thhidetroit.com/" target="_blank" class="city-box" style="background-image: url('https://images.unsplash.com/photo-1534430480872-3498386e7856?w=1200&q=80&auto=format&fit=crop');">
+                                    <div class="city-box-content">
+                                        <div style="font-family: 'Taviraj', serif; font-size: 26px; font-weight: 700; color: var(--homium-yellow); margin-bottom: 10px;">Detroit</div>
+                                        <div style="font-size: 18px; color: #E2E8F0;">The Heritage Home Initiative</div>
+                                        <div style="font-size: 14px; color: #CBD5E1; margin-top: 10px;">thhidetroit.com &rarr;</div>
+                                    </div>
+                                </a>
+                                <a href="https://utahdreamfund.com/" target="_blank" class="city-box" style="background-image: url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1200&q=80&auto=format&fit=crop');">
+                                    <div class="city-box-content">
+                                        <div style="font-family: 'Taviraj', serif; font-size: 26px; font-weight: 700; color: var(--homium-yellow); margin-bottom: 10px;">Utah</div>
+                                        <div style="font-size: 18px; color: #E2E8F0;">Utah Dream Fund</div>
+                                        <div style="font-size: 14px; color: #CBD5E1; margin-top: 10px;">utahdreamfund.com &rarr;</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- California Section -->
                         <div style="text-align: center; margin-bottom: 40px;">
                             <div style="font-size: 32px; font-weight: 700; color: var(--homium-yellow); margin-bottom: 20px;">California's Dream For All Program</div>
                             <div style="font-size: 20px; color: #E2E8F0;">Shared Appreciation Loan structure similar to Homium</div>
@@ -1008,8 +1115,8 @@
                 <p class="citation">Source: California Housing Finance Agency Dream For All program</p>
             </div>
 
-            <!-- Slide 16: Why Homium is Best-Fit -->
-            <div class="slide" data-slide="16">
+            <!-- Slide 15: Why Homium is Best-Fit -->
+            <div class="slide" data-slide="15">
                 <h1 class="slide-header">Why Homium Is the Best-Fit Mechanism for Kentucky Right Now</h1>
                 <div class="slide-body">
                     Homium is not "more DPA." It is the mechanism Kentucky's moment is calling for.
@@ -1018,22 +1125,18 @@
                 <div class="visual-element">
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; padding: 30px;">
                         <div style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(30, 58, 138, 0.2)); padding: 30px; border-radius: 15px; border: 2px solid var(--homium-light-blue);">
-                            <div style="font-size: 48px; margin-bottom: 20px; text-align: center;">♻️</div>
                             <div style="font-size: 24px; font-weight: 700; color: var(--homium-yellow); margin-bottom: 15px;">Capital Efficiency</div>
                             <p style="font-size: 18px;">Recycle payoffs into future households — evergreen, not one-time use</p>
                         </div>
                         <div style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(30, 58, 138, 0.2)); padding: 30px; border-radius: 15px; border: 2px solid var(--homium-light-blue);">
-                            <div style="font-size: 48px; margin-bottom: 20px; text-align: center;">🔗</div>
                             <div style="font-size: 24px; font-weight: 700; color: var(--homium-yellow); margin-bottom: 15px;">Policy Alignment</div>
                             <p style="font-size: 18px;">Complements the state's Trust Fund push and supply initiatives</p>
                         </div>
                         <div style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(30, 58, 138, 0.2)); padding: 30px; border-radius: 15px; border: 2px solid var(--homium-light-blue);">
-                            <div style="font-size: 48px; margin-bottom: 20px; text-align: center;">⚡</div>
                             <div style="font-size: 24px; font-weight: 700; color: var(--homium-yellow); margin-bottom: 15px;">Administrative Simplicity</div>
                             <p style="font-size: 18px;">Digital workflow + program rules engine + real-time reporting</p>
                         </div>
                         <div style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(30, 58, 138, 0.2)); padding: 30px; border-radius: 15px; border: 2px solid var(--homium-light-blue);">
-                            <div style="font-size: 48px; margin-bottom: 20px; text-align: center;">🎯</div>
                             <div style="font-size: 24px; font-weight: 700; color: var(--homium-yellow); margin-bottom: 15px;">Modularity</div>
                             <p style="font-size: 18px;">Louisville pilot, statewide sleeves, disaster recovery, employer/public-servant programs</p>
                         </div>
@@ -1046,48 +1149,47 @@
                 </div>
             </div>
 
-            <!-- Slide 17: Closing CTA -->
-            <div class="slide" data-slide="17">
+            <!-- Slide 16: Closing CTA -->
+            <div class="slide" data-slide="16">
                 <h1 class="slide-header">Convert Kentucky's Housing Moment Into a Perpetual Engine</h1>
                 <div class="slide-body">
                     Kentucky has momentum — major public investment proposals, active legislative focus on housing shortage, and ongoing recovery build needs. The missing piece is an <strong>evergreen financing layer</strong> that bridges affordability for real families while preserving public intent.
                 </div>
 
                 <div class="cta-section">
-                    <h3 style="font-size: 36px; margin-bottom: 25px;">🎯 Call to Action</h3>
+                    <h3 style="font-size: 36px; margin-bottom: 25px;">Call to Action</h3>
                     <div style="font-size: 22px; line-height: 1.8; text-align: left; max-width: 800px; margin: 0 auto;">
                         <p style="margin-bottom: 20px;"><strong>Stand up a Kentucky Dream Fund structure with sleeves:</strong></p>
                         <ul style="list-style: none; padding-left: 0;">
                             <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
-                                <span style="position: absolute; left: 0; color: var(--homium-dark); font-weight: 700;">→</span>
+                                <span style="position: absolute; left: 0; color: var(--homium-dark); font-weight: 700;">&rarr;</span>
                                 Louisville Pilot — prove model in real DPA environment
                             </li>
                             <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
-                                <span style="position: absolute; left: 0; color: var(--homium-dark); font-weight: 700;">→</span>
+                                <span style="position: absolute; left: 0; color: var(--homium-dark); font-weight: 700;">&rarr;</span>
                                 Statewide LMI (60-80% AMI) — serve underserved communities
                             </li>
                             <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
-                                <span style="position: absolute; left: 0; color: var(--homium-dark); font-weight: 700;">→</span>
+                                <span style="position: absolute; left: 0; color: var(--homium-dark); font-weight: 700;">&rarr;</span>
                                 Statewide Missing Middle (80-140% AMI) — workforce housing
                             </li>
                             <li style="margin-bottom: 15px; padding-left: 30px; position: relative;">
-                                <span style="position: absolute; left: 0; color: var(--homium-dark); font-weight: 700;">→</span>
+                                <span style="position: absolute; left: 0; color: var(--homium-dark); font-weight: 700;">&rarr;</span>
                                 High Ground bolt-on — disaster recovery financing
                             </li>
                         </ul>
                         <p style="margin-top: 30px; font-size: 20px;"><strong>Governed by KY sponsors. Implemented through transparent platform. Delivering:</strong></p>
-                        <p style="margin-top: 15px; font-size: 24px; font-weight: 700;">Deploy → Recycle → Deploy → Grow</p>
+                        <p style="margin-top: 15px; font-size: 24px; font-weight: 700;">Deploy &rarr; Recycle &rarr; Deploy &rarr; Grow</p>
                     </div>
                 </div>
 
                 <div style="text-align: center; margin-top: 50px;">
-                    <div style="font-size: 72px; margin-bottom: 20px;">🏠</div>
                     <div style="font-size: 32px; font-weight: 700; color: var(--homium-yellow);">Make Kentucky's Housing Dollars Work Forever</div>
                 </div>
             </div>
 
-            <!-- Slide 18: Sources -->
-            <div class="slide" data-slide="18">
+            <!-- Slide 17: Sources -->
+            <div class="slide" data-slide="17">
                 <h1 class="slide-header">Sources & References</h1>
                 <div class="visual-element">
                     <ul class="sources-list">
@@ -1102,15 +1204,15 @@
                         <li><a href="https://www.wlky.com/article/louisville-residents-questions-down-payment-assistance/69047779" target="_blank">WLKY News - Louisville Residents Raise Questions About DPA (Oct 2025)</a></li>
                         <li><a href="https://www.wdrb.com/news/residents-voice-concern-as-louisville-pauses-homebuyer-down-payment-assistance-program/article_1469aff6-67fd-41a9-9327-ce51743f3356.html" target="_blank">WDRB - Residents Voice Concern on DPA Pause (Oct 2025)</a></li>
                         <li><a href="https://apps.legislature.ky.gov/record/26rs/hb411.html" target="_blank">Kentucky Legislature - HB 411 (Affordable Housing Trust Fund Bill)</a></li>
-                        <li><a href="https://www.congress.gov/bill/119th-congress/house-bill/2725" target="_blank">Congress.gov - H.R. 2725 Affordable Housing Credit Improvement Act</a></li>
                         <li><a href="https://ohiorivervalleyinstitute.org/" target="_blank">Ohio River Valley Institute - Eastern Kentucky Flood Recovery Analysis</a></li>
                         <li><a href="https://fred.stlouisfed.org/" target="_blank">Federal Reserve Economic Data (FRED) - Income & Housing Data</a></li>
+                        <li><a href="https://thhidetroit.com/" target="_blank">The Heritage Home Initiative Detroit - Shared Appreciation DPA</a></li>
+                        <li><a href="https://utahdreamfund.com/" target="_blank">Utah Dream Fund - Shared Appreciation DPA</a></li>
                         <li><a href="https://www.homium.io/" target="_blank">Homium - Official Website</a></li>
                         <li>California Housing Finance Agency - Dream For All Program Data</li>
                         <li>Homium Kentucky Program Presentation Materials (Nov 2025)</li>
                         <li>Homium Borrower Repayment Examples and Financial Analysis</li>
                         <li>Just Choice Lending - Kentucky Affordability Analysis (2024)</li>
-                        <li>St. Louis Federal Reserve - Investment Yield Estimates</li>
                     </ul>
                 </div>
                 <div style="text-align: center; margin-top: 40px; font-size: 18px; color: var(--homium-gray);">
@@ -1123,31 +1225,30 @@
 
         <!-- Navigation Controls -->
         <div class="nav-controls">
-            <button class="nav-btn" id="prevBtn" onclick="prevSlide()">← Previous</button>
-            <button class="nav-btn" id="nextBtn" onclick="nextSlide()">Next →</button>
+            <button class="nav-btn" id="prevBtn" onclick="prevSlide()">&#8592; Previous</button>
+            <button class="nav-btn" id="nextBtn" onclick="nextSlide()">Next &#8594;</button>
         </div>
     </div>
 
     <script>
         let currentSlide = 1;
-        const totalSlides = 18;
+        const totalSlides = 17;
 
         const slideNames = [
+            "Title",
             "Kentucky's Homeownership Window",
             "The Structural Gap",
             "Policy Momentum",
             "DPA Demand Exceeds Supply",
-            "What Homium Changes",
-            "Borrower Economics: DTI Relief",
-            "Household Wealth Multiplier",
+            "Better Capital",
+            "Borrower Economics",
             "Kentucky Implementation Sleeves",
             "Louisville Pilot",
             "Statewide LMI Track",
             "Statewide Missing Middle",
             "2026 Legislative Posture",
             "High Ground / Flood Recovery",
-            "Federal Supply Tailwinds",
-            "National Proof: Dream For All",
+            "National Proof: Demand Validated",
             "Why Homium Is Best-Fit",
             "Closing CTA",
             "Sources & References"
@@ -1183,10 +1284,10 @@
 
         function showSlide(n) {
             const slides = document.querySelectorAll('.slide');
-            
+
             if (n > totalSlides) currentSlide = totalSlides;
             if (n < 1) currentSlide = 1;
-            
+
             slides.forEach((slide, index) => {
                 slide.classList.remove('active', 'prev');
                 if (index + 1 === currentSlide) {
@@ -1195,7 +1296,7 @@
                     slide.classList.add('prev');
                 }
             });
-            
+
             updateSlideCounter();
             updateNavigation();
         }
@@ -1229,6 +1330,26 @@
                 prevSlide();
             }
         });
+
+        // Touch/swipe navigation
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        document.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            const swipeDistance = touchStartX - touchEndX;
+            if (Math.abs(swipeDistance) > 50) {
+                if (swipeDistance > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+            }
+        }, { passive: true });
 
         // Initialize
         initNavMenu();
